@@ -69,11 +69,11 @@
     background-color: #6C6768;
 }
 
-.operand {
+.operator {
     background-color: #FF9F0A;
     font-size: 26px;
 }
 
-.operand:active {
+.operator:active {
     background-color: #CB7E06;
 }
