@@ -24,6 +24,7 @@ var _numberElements = document.querySelectorAll(".number");
 var _screenElement = document.querySelector(".screen");
 var _clearButton = document.querySelector(".clear");
 var _operatorButtons = document.querySelectorAll(".operator");
+var _percentButton = document.querySelector(".percent");
 
 // number on the screen
 var _numberHolder = "";
@@ -45,6 +46,8 @@ for (var i = 0; i < _operatorButtons.length; i++) {
 }
 
 _clearButton.addEventListener("click", _clearButtonClicked);
+
+_percentButton.addEventListener("click", _percentButtonClicked);
 
 
 
@@ -191,4 +194,21 @@ function _clearButtonClicked() {
 
     // clear screen
     _updateScreen(0);
+}
+
+/**
+ *
+ */
+function _percentButtonClicked() {
+
+    var _numberAsInt = parseFloat(_numberHolder);
+
+    if (isNaN(_numberAsInt)) {
+        _numberAsInt = parseFloat(_stack[0]);
+    }
+
+    _numberHolder = _calculate(_numberAsInt, 100, "divide");
+
+    _updateScreen(_numberHolder)
+
 }
