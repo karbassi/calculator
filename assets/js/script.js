@@ -25,6 +25,7 @@ var _screenElement = document.querySelector(".screen");
 var _clearButton = document.querySelector(".clear");
 var _operatorButtons = document.querySelectorAll(".operator");
 var _percentButton = document.querySelector(".percent");
+var _plusminusButton = document.querySelector(".plusminus");
 
 // number on the screen
 var _numberHolder = "";
@@ -46,8 +47,8 @@ for (var i = 0; i < _operatorButtons.length; i++) {
 }
 
 _clearButton.addEventListener("click", _clearButtonClicked);
-
 _percentButton.addEventListener("click", _percentButtonClicked);
+_plusminusButton.addEventListener("click", _plusminusButtonClicked);
 
 
 
@@ -209,6 +210,23 @@ function _percentButtonClicked() {
 
     _numberHolder = _calculate(_numberAsInt, 100, "divide");
 
-    _updateScreen(_numberHolder)
+    _updateScreen(_numberHolder);
 
+}
+
+
+/**
+ * Flip from positive to negative.
+ */
+function _plusminusButtonClicked() {
+    var _numberAsInt = parseFloat(_numberHolder);
+
+    // Flip the sign
+    _numberAsInt = _numberAsInt * -1;
+
+    // Save back to _numberHolder
+    _numberHolder = _numberAsInt;
+
+    // Update the screen
+    _updateScreen(_numberHolder);
 }
